@@ -5,6 +5,11 @@ import string
 import sys
 from lookup import *
 
+if len(sys.argv) == 1:
+	folder=''
+else:
+	folder=sys.argv[1]
+
 def statFormula(base,lv,nat,iv,ev):
 	if nat == -1: #for HP
 		return (iv+2*base+ev/4+100)*lv/100+10
@@ -256,13 +261,17 @@ for poke in team:
 			if len(movepool[i])<5:
 				moves = movepool[i][1:len(movepool[i])]
 			else:
-				moves = []
-				for j in range(4):
-					while True:
-						x=random.randint(1,len(movepool[i]))
-						if movepool[i][x] not in moves:
-							break
-					moves.append(movepool[i][x])
+				while True:
+					moves = []
+					for j in range(4):
+						while True:
+							x=random.randint(1,len(movepool[i]))
+							if movepool[i][x] not in moves:
+								break
+						moves.append(movepool[i][x])
+					#at least one move must be "damaging"
+					if moves[0] in damaging.values() or moves[1] in damaging.values() or moves[2] in damaging.values() or moves[3] in damaging.values():
+						break
 			break
 
 	for i in range(len(moves)):
@@ -348,10 +357,9 @@ for poke in team:
 
 	
 
-	outfile=open("poke"+str(count)+".pkm",'w')
+	outfile=open(folder+"poke"+str(count)+".pkm",'w')
 	p.tofile(outfile)
 	outfile.close()
 	
-
 	#write .pkm file
 	#print species[poke],forme,level,exp,gender,abilityLU[ability],items[item],IVs,EVs,happiness,[attacks[moves[i]] for i in range(len(moves))]
