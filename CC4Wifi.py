@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from numpy import random
+import random
 import string
 import sys
 from lookup import *
@@ -110,7 +110,7 @@ inv_attacks = dict((v,k) for k, v in attacks.iteritems())
 team = []
 for i in range(6):
 	while True:
-		x=random.randint(1,650)
+		x=random.randint(1,649)
 		if x not in team:
 			break
 	team.append(x)
@@ -120,15 +120,15 @@ for poke in team:
 	count = count+1
 	#choose forme at random
 	if poke == 201: #unown
-		forme=random.randint(0,28)
+		forme=random.randint(0,27)
 	elif poke in [412,413]: #burmy/wormadam
-		forme=random.randint(0,3)
-	elif poke in [422,423,492,550]: #shellos/gastrodon/shaymin/basculin
 		forme=random.randint(0,2)
+	elif poke in [422,423,492,550]: #shellos/gastrodon/shaymin/basculin
+		forme=random.randint(0,1)
 	elif poke in [386,585,586]: #deoxys/deeling/sawsbuck
-		forme=random.randint(0,4)
+		forme=random.randint(0,2)
 	elif poke == 479: #rotom
-		forme=random.randint(0,6)
+		forme=random.randint(0,5)
 	else:
 		forme = 0;	
 
@@ -152,7 +152,7 @@ for poke in team:
 	elif species[poke] in ['Blissey','Chansey','Cresselia','Froslass','Happiny','Illumise','Jynx','Kangaskhan','Latias','Lilligant','Mandibuzz','Miltank','Nidoqueen','Nidoran (F)','Nidorina','Petilil','Smoochum','Vespiquen','Vullaby','Wormadam']:
 		gender = 2
 	else:
-		gender = random.randint(1,3)
+		gender = random.randint(1,2)
 
 	#choose ability at random (include DW)
 	#find line in abilities array
@@ -161,15 +161,15 @@ for poke in team:
 			ab = abilities[i]
 			break
 	while True:
-		ability = ab[random.randint(1,3)]
+		ability = ab[random.randint(1,2)]
 		if ability != 0:
 			break
 
 	#choose nature at random
-	nature = random.randint(0,25)
+	nature = random.randint(0,24)
 	
 	#choose item at random
-	item = items.keys()[random.randint(0,len(items))]
+	item = items.keys()[random.randint(0,len(items)-1)]
 
 	#change forme for Arceus/Giratina, if you need to
 	if poke == 487 and item == 0x0070:
@@ -181,14 +181,14 @@ for poke in team:
 	#choose IVs at random
 	IVs = []
 	for i in range(6):
-		IVs.append(random.randint(0,32))
+		IVs.append(random.randint(0,31))
 
 	#choose EVs at random
 	EVs=[0]*6
 	EVpool = 510
 	while EVpool > 0:
-		x=random.randint(0,6)
-		y=random.randint(0,min(EVpool,255-EVs[x])+1)
+		x=random.randint(0,5)
+		y=random.randint(0,min(EVpool,255-EVs[x]))
 		EVs[x]=EVs[x]+y
 		EVpool=EVpool-y
 
@@ -220,7 +220,7 @@ for poke in team:
 	stats[5]=statFormula(pokestats[fakepoke][5],level,nmod[nature][5-1],IVs[5],EVs[5])
 	
 	#choose happiness at random
-	happiness = random.randint(0,256)
+	happiness = random.randint(0,255)
 
 	#choose four moves at random from movepool--don't worry about illegal combos
 	if species[poke] == 'Rotom':
@@ -243,10 +243,6 @@ for poke in team:
 			fakename = 'Wormadam-S'
 		else:
 			fakename = species[poke]
-	elif species[poke] == 'Nidoran (M)':
-		fakename = 'Nidoran-M'
-	elif species[poke] == 'Nidoran (F)':
-		fakename = 'Nidoran-F'
 	elif species[poke] == 'Mime Jr.':
 		fakename = 'MimeJr.'
 	elif species[poke] == 'Mr. Mime':
@@ -265,7 +261,7 @@ for poke in team:
 					moves = []
 					for j in range(4):
 						while True:
-							x=random.randint(1,len(movepool[i]))
+							x=random.randint(1,len(movepool[i])-1)
 							if movepool[i][x] not in moves:
 								break
 						moves.append(movepool[i][x])
@@ -348,16 +344,14 @@ for poke in team:
 	for i in range(len(moves)):
 		p[48+i]=pp[moves[i]]
 
-	#nickname
+	#nickname=name
 	for i in range(len(species[poke])):
 		p[72+2*i]=ord(species[poke][i])
 	p[72+2*i+2] = p[72+2*i+3] = p[92] = p[93] = ord('\xff')
 
 
 
-	
-
-	outfile=open(folder+"poke"+str(count)+".pkm",'w')
+	outfile=open(folder+"poke"+str(count)+".pkm",'wb')
 	p.tofile(outfile)
 	outfile.close()
 	
