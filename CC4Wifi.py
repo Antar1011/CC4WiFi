@@ -71,7 +71,8 @@ raw = file.readlines()
 file.close()
 levelbalance=[]
 for line in raw:
-	levelbalance.append([line[0:len(line)-4],int(line[len(line)-3:len(line)-1])])
+	space=string.find(line,' ')
+	levelbalance.append([line[0:space],int(line[space+1:len(line)-1])])
 
 #read in abilities
 file = open("poke_ability1_5G.txt")
@@ -136,7 +137,6 @@ for poke in team:
 		fakeforme=0
 	else:
 		fakeforme=forme
-		
 	for i in range(len(levelbalance)):
 		if (levelbalance[i][0] == str(poke)+":"+str(fakeforme)):
 			level = levelbalance[i][1]
@@ -350,10 +350,9 @@ for poke in team:
 	p[72+2*i+2] = p[72+2*i+3] = p[92] = p[93] = ord('\xff')
 
 
-
+	#write .pkm file
 	outfile=open(folder+"poke"+str(count)+".pkm",'wb')
 	p.tofile(outfile)
 	outfile.close()
 	
-	#write .pkm file
 	#print species[poke],forme,level,exp,gender,abilityLU[ability],items[item],IVs,EVs,happiness,[attacks[moves[i]] for i in range(len(moves))]
