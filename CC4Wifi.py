@@ -125,8 +125,8 @@ for poke in team:
 		forme=random.randint(0,2)
 	elif poke in [422,423,492,550]: #shellos/gastrodon/shaymin/basculin
 		forme=random.randint(0,1)
-	elif poke in [386,585,586]: #deoxys/deeling/sawsbuck
-		forme=random.randint(0,2)
+	elif poke in [386,585,586]: #deoxys/deerling/sawsbuck
+		forme=random.randint(0,3)
 	elif poke == 479: #rotom
 		forme=random.randint(0,5)
 	else:
