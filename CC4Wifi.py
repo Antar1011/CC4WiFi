@@ -349,6 +349,12 @@ for poke in team:
 		p[72+2*i]=ord(species[poke][i])
 	p[72+2*i+2] = p[72+2*i+3] = p[92] = p[93] = ord('\xff')
 
+	#checksum
+	checksum=0
+	for i in range(8,137,2):
+		checksum = (checksum+p[i]+p[i+1]*256)%65536
+	p[0x06]=checksum%256
+	p[0x07]=checksum/256
 
 	#write .pkm file
 	outfile=open(folder+"poke"+str(count)+".pkm",'wb')

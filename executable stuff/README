@@ -1,6 +1,6 @@
 Thank you for downloading CC4Wifi
 
-v1.0
+v1.3
 
 Project Home: https://github.com/Antar1011/CC4WiFi
 
@@ -23,10 +23,16 @@ Instructions:
 		-MAC: CC4Wifi.command
 		-LINUX: CC4Wifi.sh
 	-Six numbered pkm files will be generated on your desktop in the folder CC
-	-Open a Black & White sav file of your choice in Pokesav (Pokegen is not supported). Unless this file is just for challenge cup, you'll probably want to make a backup.
-	-Load the pkm files IN ORDER into the six party slots. Make sure to set "Party Amount" to 6. It's not a good idea to load the files to a box, since you'll have issues with mail.
+	-Open a Black & White sav file of your choice in Pokesav or Pokegen. Unless this file is just for challenge cup, you'll probably want to make a backup.
+	-Load the pkm files IN ORDER into the six party slots. Make sure to set "Party Amount" to 6 if you're using Pokesav. It's not a good idea to load the files to a box, since you'll have issues with mail.
 	-Save your sav file, load it onto your retail cart, flash cart, or w/e, hop on Wi-Fi, and battle a friend!
 	-When you're ready for your next match, just run CC4Wifi.bat/command/sh again. Your old team will be overwritten (so back it up if you want to save it for reference purposes).
+
+Changelog:
+v1.3 -- Added checksum so it now works with Pokegen
+v1.2 -- Fixed bug with Sunkern breaking the auto-leveller
+v1.1 -- All Deerling/Sawsbuck formes now possible
+v1.0 -- Released
 
 Credits and License:
 	CC4Wifi was written by Antar of Smogon (Antar1011 of Youtube). Many thanks go to Infinite Recursion for ir-gts-bw, as much of the pkm-generating code for this program was written by reverse-engineering the code from that one. Thanks also go out to King N of Smogon for helping in the planning stages.
