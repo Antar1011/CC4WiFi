@@ -161,7 +161,7 @@ for poke in team:
 			ab = abilities[i]
 			break
 	while True:
-		ability = ab[random.randint(1,2)]
+		ability = ab[random.randint(1,3)]
 		if ability != 0:
 			break
 

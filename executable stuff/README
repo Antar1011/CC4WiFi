@@ -1,6 +1,6 @@
 Thank you for downloading CC4Wifi
 
-v1.3
+v1.4
 
 Project Home: https://github.com/Antar1011/CC4WiFi
 
@@ -29,6 +29,7 @@ Instructions:
 	-When you're ready for your next match, just run CC4Wifi.bat/command/sh again. Your old team will be overwritten (so back it up if you want to save it for reference purposes).
 
 Changelog:
+v1.4 -- Now with DW abilities!
 v1.3 -- Added checksum so it now works with Pokegen
 v1.2 -- Fixed bug with Sunkern breaking the auto-leveller
 v1.1 -- All Deerling/Sawsbuck formes now possible
