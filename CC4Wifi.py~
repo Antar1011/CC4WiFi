@@ -338,8 +338,8 @@ for poke in team:
 	p[0x07]=checksum/256
 
 	#write .pkm file
-	outfile=open(folder+"poke"+str(count)+".pkm",'wb')
-	p.tofile(outfile)
-	outfile.close()
+	#outfile=open(folder+"poke"+str(count)+".pkm",'wb')
+	#p.tofile(outfile)
+	#outfile.close()
 	
 	#print species[poke],forme,level,exp,gender,abilityLU[ability],items[item],IVs,EVs,happiness,[attacks[moves[i]] for i in range(len(moves))]
