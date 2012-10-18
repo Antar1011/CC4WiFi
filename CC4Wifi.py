@@ -22,7 +22,7 @@ file = open("learnsets.json")
 raw = file.readline()
 file.close()
 
-movepool = json.loads(raw[1:len(raw)-2])
+movepool = json.loads(raw)
 
 #read in level balance
 file = open("level_balance.txt")
@@ -215,6 +215,13 @@ for poke in team:
 			fakename = 'Rotommow'
 		else:
 			fakename = species[poke]
+	elif species[poke] == 'Kyurem':
+		if forme == 1:
+			fakename = 'Kyuremwhite'
+		elif forme == 2:
+			fakename = 'Kyuremblack'
+		else:
+			fakename = species[poke]	
 	elif species[poke] == 'Wormadam':
 		if forme == 1:
 			fakename = 'Wormadamtrash'
@@ -230,8 +237,10 @@ for poke in team:
 		fakename = 'Farfetchd'
 	else:
 		fakename = species[poke]
-
-	pool = movepool[fakename.lower()]["learnset"].keys()
+	if fakename == 'Smeargle':
+		pool = attacks.values()
+	else:
+		pool = movepool[fakename.lower()]["learnset"].keys()
 	if len(pool)<5:
 		moves = pool
 	else:
